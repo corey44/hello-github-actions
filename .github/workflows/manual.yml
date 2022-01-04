@@ -36,18 +36,15 @@ jobs:
       - uses: actions/checkout@v2
       - name: echo msg
         run: echo *****START*****
-  # Batch job
-  run_batch:
-    runs-on: windows-latest
-    needs: code_checkout
-    steps:
       - name: Run Batch
+        if: true
         shell: cmd
         run: |
-          .\test_batch.bat
+          echo *****RUN BATCH RUN*****
+          .\test_batch.bat  
   check-success:
     runs-on: windows-latest
-    needs: run_batch
+    needs: code_checkout
     steps:
       - name: echo_success
         run: echo *****SUCCESS*****
