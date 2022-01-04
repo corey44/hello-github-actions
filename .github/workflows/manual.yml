@@ -36,7 +36,7 @@ jobs:
     - name: Run Batch
       shell: cmd
       run: |
-        .\test-batch.bat
+        .\test_batch.bat
   check-success:
     runs-on: windows-latest
     needs: run_batch
