@@ -33,10 +33,10 @@ jobs:
     runs-on: windows-latest
     needs: greet
     steps:
-    - name: Run Batch
-      shell: cmd
-      run: |
-        .\test_batch.bat
+      - name: Run Batch
+        shell: cmd
+        run: |
+          .\test_batch.bat
   check-success:
     runs-on: windows-latest
     needs: run_batch
