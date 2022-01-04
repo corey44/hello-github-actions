@@ -39,7 +39,7 @@ jobs:
   # Batch job
   run_batch:
     runs-on: windows-latest
-    needs: greet
+    needs: code_checkout
     steps:
       - name: Run Batch
         shell: cmd
