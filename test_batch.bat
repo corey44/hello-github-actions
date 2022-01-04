@@ -1,3 +1,3 @@
 @ECHO OFF
-ECHO Running batch file with exit code != 0
-EXIT /B 2
+ECHO Running batch file with exit code = 0
+EXIT /B 0
