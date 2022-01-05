@@ -37,14 +37,35 @@ jobs:
       - name: echo msg
         run: echo *****START*****
       - name: Run Batch
-        if: true
+        # Disabling b/c don't need to run every time.
+        if: false
         shell: cmd
         run: |
           echo *****RUN BATCH RUN*****
-          .\test_batch.bat  
-  check-success:
+          .\test_batch.bat 
+  check_for_file:
     runs-on: windows-latest
     needs: code_checkout
+    steps:
+      - name: check for file
+        if: true
+        shell: cmd
+        run: |
+          IF EXIST .\test_batch.bat (
+            ECHO "myfile=true" >> $GITHUB_ENV
+          ) ELSE (
+            ECHO "myfile=false" >> $GITHUB_ENV
+          )
+      - name: var check
+        if: env.myfile
+        run: echo "file found"
+      - name: var check 2
+        if: env.myfile != 'true'
+        run: echo "file not found"
+    
+  check-success:
+    runs-on: windows-latest
+    needs: check_for_file
     steps:
       - name: echo_success
         run: echo *****SUCCESS*****
