@@ -51,7 +51,7 @@ jobs:
         if: true
         shell: cmd
         run: |
-          IF EXIST .\test_batch.bat (
+          IF EXIST test_batch.bat (
             ECHO "myfile=true" >> $GITHUB_ENV
           ) ELSE (
             ECHO "myfile=false" >> $GITHUB_ENV
